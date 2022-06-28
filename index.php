@@ -1,17 +1,11 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v=3.0.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+<?php
+// include auth_session.php file on all user panel pages
+if ($_SESSION != null) {
+    // include("auth_session.php");
+} else {
+    // header("Location: pages/authentication/signin/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +39,8 @@
             <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
                 target="_blank">
                 <img src="./assets/img/igslogo.png" class="navbar-brand-img h-100" alt="main_logo" />
-                <span class="ms-1 font-weight-bold text-white">Backend IT Consultant</span>
+                <span class="ms-1 font-weight-bold text-white">Backend IT Consultant. Hey,
+                    <?php echo $_SESSION['username']; ?>!</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2" />
@@ -103,7 +98,7 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
+                                <span class="d-sm-inline d-none"><a href="logout.php">Logout</a></span>
                             </a>
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
