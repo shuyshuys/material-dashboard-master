@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -186,36 +184,8 @@ session_start();
                                 </div>
                             </div>
                             <div class="card-body">
-                                <?php
-                                require('../../../assets/db/db.php');
-                                // session_start();
-
-                                // require('../../../assets/db/db.php');
-                                // When form submitted, check and create user session.
-                                if (isset($_POST['username'])) {
-                                    $username = stripslashes($_REQUEST['username']);    // removes backslashes
-                                    $username = mysqli_real_escape_string($con, $username);
-                                    $password = stripslashes($_REQUEST['password']);
-                                    $password = mysqli_real_escape_string($con, $password);
-                                    // Check user is exist in the database
-                                    $query    = "SELECT * FROM `users` WHERE username='$username'
-                                                             AND password='" . $password . "'";
-                                    $result = mysqli_query($con, $query) or die(mysqli_connect_errno());
-                                    $rows = mysqli_num_rows($result);
-                                    if ($rows == 1) {
-                                        $_SESSION['username'] = $username;
-                                        // Redirect to user dashboard page
-                                        echo "<h1>Login sukses!</h1>";
-                                        header("Location: https://www.examplecom/");
-                                    } else {
-                                        echo "<div class='form'>
-                                                    <h3>Incorrect Username/password.</h3><br/>
-                                                    <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
-                                                    </div>";
-                                    }
-                                } else {
-                                ?>
-                                <form role="form" class="text-start" method="post" name="login">
+                                
+                                <form role="form" class="text-start" method="post" name="login" action="auth.php">
                                     <div class="input-group input-group-outline my-3">
                                         <!-- <span style="margin:7px 10px 0px 0px;">Username</span> -->
                                         <!-- <label class="form-label"></label> -->
@@ -247,9 +217,7 @@ session_start();
                                             class="text-primary text-gradient font-weight-bold">Sign up</a>
                                     </p>
                                 </form>
-                                <?php
-                                }
-                                ?>
+                                
                             </div>
                         </div>
                     </div>
